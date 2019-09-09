@@ -2,7 +2,6 @@ package main;
 
 import java.util.Comparator;
 
-
 public class CircularLinkedQueue {
 
 	private int circularLinkedQueueCapacity;
