@@ -89,7 +89,6 @@ public class CircularLinkedQueue {
 		ProcessNode p = headNode;
 		String queueMessage = "";
 		do {
-			//queueMessage += "Process ID : " + p.getValue().getProcessID() + "Process Name : " + p.getValue().getProcessName() + "Process Owner :  " + p.getValue().getOwner() + "Process CPUTime : " + p.getValue().getPercentOfCPUTime();
 			queueMessage += p.getValue().getProcessID() + " ";
 			p = p.next;
 		}

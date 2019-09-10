@@ -18,7 +18,7 @@ public class CircularLinkedQueueImpl {
 		queue.add(wordDoc);
 		queue.add(excel);
 
-		//queue.remove();
+		queue.remove();
 		queue.printQueue();
 		queue.sortFunctions();
 

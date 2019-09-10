@@ -19,7 +19,7 @@ public class CircularLinkedQueueImplTest {
 	public void setup() {
 		queue = new CircularLinkedQueue(5);
 	}
-
+	//Check size of the queue
 	@Test
 	public void testCircularLinkedQueue_SizeCheck() {
 
@@ -29,11 +29,10 @@ public class CircularLinkedQueueImplTest {
 		queue.add(word);
 		Process excel = new Process("Microsoft Excel", "Microsoft", 2, 4, 23.34, 5,10.11);
 		queue.add(excel);
-
 		assertEquals(5, queue.size());
 	}
 
-
+	//Check if the node is added
 	@Test
 	public void testCircularLinkedQueue_AddNode() {
 		Process word = new Process("Microsoft Word", "Microsoft", 1, 4, 23.34, 5, 10.66);
@@ -42,11 +41,11 @@ public class CircularLinkedQueueImplTest {
 		queue.add(excel);
 
 		String queuePrintValue = queue.print();
-
 		assertNotNull(queuePrintValue);
 		assertEquals("1 2 ", queuePrintValue);
 	}
 
+	//Check is add and remove working correctly 
 	@Test
 	public void testCircularLinkedQueue_AddNode_RemoveNode() {
 		Process word = new Process("Microsoft Word", "Microsoft", 1, 4, 23.34, 5, 67.76);
@@ -68,12 +67,14 @@ public class CircularLinkedQueueImplTest {
 		assertEquals("2 ", queuePrintValue);
 	}
 
+	//Remove node when there is no node in queue : throws an exception
 	@Test(expected = IllegalStateException.class)
 	public void testCircularLinkedQueue_RemoveNode_EmptyQueue() {
 
 		queue.remove();
 	}
 
+	//Size checked once increase
 	@Test
 	public void testCircularLinkedQueue_SizeCheckIncreased() {
 		Process word = new Process("Microsoft Word", "Microsoft", 1, 4, 23.34, 5, 67.90);
@@ -104,6 +105,8 @@ public class CircularLinkedQueueImplTest {
 		assertEquals(10, queue.size());
 	}
 
+
+	//Check if intermixing add and remove, queue behaves as expected
 	@Test
 	public void testCircularLinkedQueue_AddRemoveMixed_SizeNotIncreased() {
 		Process word = new Process("Microsoft Word", "Microsoft", 1, 4, 23.34, 5, 67.90);

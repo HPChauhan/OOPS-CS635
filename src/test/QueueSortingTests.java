@@ -16,11 +16,13 @@ public class QueueSortingTests {
 		queue = new CircularLinkedQueue(5);
 	}
 	
+	//AssertEquals statements depicts the process sorted by ID, Owner, Name and CPUTTime, 
+	//but for simplicity only IDs are printed in tests after sorting are printed.
+	
 	@Test
 	public void testCircularLinkedQueue_SortByIdTest() {
 
 		assertEquals(5, queue.size());
-
 		Process word = new Process("Microsoft Word", "Microsoft", 3, 4, 23.34, 5, 67.55);
 		queue.add(word);
 		Process excel = new Process("Microsoft Excel", "Microsoft", 2, 4, 23.34, 5,10.11);
@@ -32,7 +34,7 @@ public class QueueSortingTests {
 		String strQueue = sortedQueueHeadNode.print();
 		
 		assertNotNull(strQueue);
-		//assertEquals("2 3 7 ", strQueue);
+		assertEquals("2 3 7 ", strQueue);
 	}
 
 
@@ -40,18 +42,17 @@ public class QueueSortingTests {
 	public void testCircularLinkedQueue_SortByOwnerTest() {
 
 		assertEquals(5, queue.size());
-
-		Process word = new Process("Microsoft Word", "Microsoft", 3, 4, 23.34, 5, 67.55);
+		Process word = new Process("Word", "Microsoft", 3, 4, 23.34, 5, 67.55);
 		queue.add(word);
-		Process excel = new Process("Microsoft Excel", "Apple", 2, 4, 23.34, 5,10.11);
+		Process excel = new Process("Excel", "Apple", 2, 4, 23.34, 5,10.11);
 		queue.add(excel);
-		Process powerpoint = new Process("Microsoft Powerpoint", "Google", 7, 4, 23.34, 5, 9.90);
+		Process powerpoint = new Process("Powerpoint", "Google", 7, 4, 23.34, 5, 9.90);
 		queue.add(powerpoint);
 
 		CircularLinkedQueue sortedQueueHeadNode = queue.sortQueueByOwner();
 		String strQueueCPU = sortedQueueHeadNode.print();
 		assertNotNull(strQueueCPU);
-		//assertEquals("Apple Google Microsoft ", strQueueCPU);
+		assertEquals("2 7 3 ", strQueueCPU);
 	}
 	
 	
@@ -59,7 +60,6 @@ public class QueueSortingTests {
 	public void testCircularLinkedQueue_SortByNameTest() {
 
 		assertEquals(5, queue.size());
-
 		Process word = new Process("Word", "Microsoft", 3, 4, 23.34, 5, 67.55);
 		queue.add(word);
 		Process excel = new Process("Excel", "Apple", 2, 4, 23.34, 5, 10.11);
@@ -78,7 +78,6 @@ public class QueueSortingTests {
 	public void testCircularLinkedQueue_SortByCPUTime() {
 
 		assertEquals(5, queue.size());
-
 		Process word = new Process("Word", "Microsoft", 3, 4, 23.34, 5, 67.55);
 		queue.add(word);
 		Process excel = new Process("Excel", "Apple", 2, 4, 23.34, 5, 10.11);
@@ -86,10 +85,30 @@ public class QueueSortingTests {
 		Process powerpoint = new Process("Powerpoint", "Google", 7, 4, 23.34, 5, 9.90);
 		queue.add(powerpoint);
 
-		CircularLinkedQueue sortedQueueHeadNode = queue.sortQueueByName();
+		CircularLinkedQueue sortedQueueHeadNode = queue.sortQueueByCPUTime();
 		String strQueueCPU = sortedQueueHeadNode.print();
 		assertNotNull(strQueueCPU);
-		assertEquals("2 7 3 ", strQueueCPU);
-	}
+		assertEquals("7 3 2 ", strQueueCPU);
+		}
+	
+	
+	
+	
+	@Test
+	public void testCircularLinkedQueue_SortByPercentOfCPUTimeUsed() {
+
+		assertEquals(5, queue.size());
+		Process word = new Process("Word", "Microsoft", 3, 4, 23.34, 5, 67.55);
+		queue.add(word);
+		Process excel = new Process("Excel", "Apple", 2, 4, 23.34, 5, 10.11);
+		queue.add(excel);
+		Process powerpoint = new Process("Powerpoint", "Google", 7, 4, 23.34, 5, 9.90);
+		queue.add(powerpoint);
+
+		CircularLinkedQueue sortedQueueHeadNode = queue.sortQueueByPercentOfCPUTime();
+		String strQueueCPU = sortedQueueHeadNode.print();
+		assertNotNull(strQueueCPU);
+		assertEquals("7 2 3 ", strQueueCPU);
+		}
 	
 }
